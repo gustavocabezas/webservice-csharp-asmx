@@ -25,24 +25,18 @@ namespace WebServiceCSharp
             string connectionString = "Data Source=localhost;Initial Catalog=test;User Id=test;Password=test";
 
             // Crear una instancia del contexto de base de datos
-            YourDataContext dataContext = new YourDataContext(connectionString);
+            UserDataContext dataContext = new UserDataContext(connectionString);
 
             // Crear una instancia del repositorio de usuarios
             _userRepository = new UserRepository(dataContext);
         }
 
         [WebMethod]
-        public string HelloWorld()
-        {
-            return "Hola a todos";
-        } 
-
-        [WebMethod]
         public string CreateUser(string userJson)
         {
             try
             {
-                UserBO user = JsonConvert.DeserializeObject<UserBO>(userJson);
+                User user = JsonConvert.DeserializeObject<User>(userJson);
                 _userRepository.InsertUser(user);
                 return "Success"; // Inserción exitosa
             }
@@ -59,7 +53,7 @@ namespace WebServiceCSharp
         {
             try
             {
-                UserBO user = JsonConvert.DeserializeObject<UserBO>(userJson);
+                User user = JsonConvert.DeserializeObject<User>(userJson);
                 _userRepository.UpdateUser(user);
                 return "Success"; // Inserción exitosa
             }

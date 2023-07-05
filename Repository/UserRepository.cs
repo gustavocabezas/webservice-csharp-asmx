@@ -5,22 +5,22 @@ namespace WebServiceCSharp.Repository
 
     public class UserRepository
     {
-        private readonly YourDataContext _dataContext;
+        private readonly UserDataContext _dataContext;
 
-        public UserRepository(YourDataContext dataContext)
+        public UserRepository(UserDataContext dataContext)
         {
             _dataContext = dataContext;
         }
 
-        public void InsertUser(UserBO user)
+        public void InsertUser(User user)
         {
             _dataContext.User.Add(user);
             _dataContext.SaveChanges();
         }
 
-        public void UpdateUser(UserBO user)
+        public void UpdateUser(User user)
         {
-            UserBO existingUser = _dataContext.User.Find(user.Id);
+            User existingUser = _dataContext.User.Find(user.Id);
 
             if (existingUser != null)
             {
