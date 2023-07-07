@@ -1,4 +1,6 @@
-﻿using WebServiceCSharp.Models;
+﻿using System.Collections.Generic;
+using System.Linq;
+using WebServiceCSharp.Models;
 
 namespace WebServiceCSharp.Repository
 {
@@ -12,22 +14,43 @@ namespace WebServiceCSharp.Repository
             _dataContext = dataContext;
         }
 
-        public void InsertUser(User user)
+        public User GetUserById(int id)
         {
-            _dataContext.User.Add(user);
+            User user = _dataContext.User.Find(id);
+            return user;
+        }
+
+        public void InsertUser(User entity)
+        {
+            _dataContext.User.Add(entity);
             _dataContext.SaveChanges();
         }
 
-        public void UpdateUser(User user)
+        public void UpdateUser(User entity)
         {
-            User existingUser = _dataContext.User.Find(user.Id);
+            User existingUser = _dataContext.User.Find(entity.Id);
 
             if (existingUser != null)
             {
-                _dataContext.Entry(existingUser).CurrentValues.SetValues(user);
-
+                _dataContext.Entry(existingUser).CurrentValues.SetValues(entity);
                 _dataContext.SaveChanges();
             }
+        }
+
+        public void DeleteUser(int id)
+        {
+            User existingUser = _dataContext.User.Find(id);
+
+            if (existingUser != null)
+            {
+                _dataContext.User.Remove(existingUser);
+                _dataContext.SaveChanges();
+            }
+        }
+
+        public List<User> GetAllUsers()
+        {
+            return _dataContext.User.ToList();
         }
     }
 }
