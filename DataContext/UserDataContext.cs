@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity;
-using WebServiceCSharp.Models;
+using webservicecsharpasmx.Models;
 
-namespace WebServiceCSharp.Repository
+namespace webservicecsharpasmx.Repository
 {
     public class UserDataContext : DbContext
     {

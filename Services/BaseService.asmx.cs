@@ -1,6 +1,6 @@
 ﻿using System.Web.Services;
 
-namespace WebServiceCSharp.Services
+namespace webservicecsharpasmx.Services
 {
     /// <summary>
     /// Summary description for BaseService

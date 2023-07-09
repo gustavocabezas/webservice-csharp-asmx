@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using WebServiceCSharp.Models;
+using webservicecsharpasmx.Models;
 
-namespace WebServiceCSharp.Repository
+namespace webservicecsharpasmx.Repository
 {
 
     public class UserRepository

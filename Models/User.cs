@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WebServiceCSharp.Models
+namespace webservicecsharpasmx.Models
 {
     public class User
     {

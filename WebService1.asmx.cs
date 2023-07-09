@@ -3,11 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Web.Script.Services;
 using System.Web.Services;
-using WebServiceCSharp.Models;
-using WebServiceCSharp.Repository;
+using webservicecsharpasmx.Models;
+using webservicecsharpasmx.Repository;
 
 
-namespace WebServiceCSharp
+namespace webservicecsharpasmx
 {
     /// <summary>
     /// Descripción breve de WebService1
@@ -74,8 +74,8 @@ namespace WebServiceCSharp
             }
         }
 
+        /*[ScriptMethod(ResponseFormat = ResponseFormat.Json)]*/
         [WebMethod]
-        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string GetUserById(int id)
         {
             try
@@ -102,7 +102,6 @@ namespace WebServiceCSharp
                 return ex.Message;
             }
         }
-
 
     }
 }
