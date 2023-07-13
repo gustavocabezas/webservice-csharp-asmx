@@ -8,11 +8,25 @@ namespace webservicecsharpasmx.Repository
     public class UserRepository
     {
         private readonly UserDataContext _dataContext;
-
         public UserRepository(UserDataContext dataContext)
         {
             _dataContext = dataContext;
         }
+
+        public User AuthenticationUser(User entity)
+        {
+            /*User existingUser = _dataContext.User.Find(entity.Username);*/
+
+            //linq
+            User existingUser = _dataContext.User.FirstOrDefault(u => u.Username == entity.Username);
+
+            if (existingUser != null)
+                if (existingUser.Password == entity.Password)
+                    return existingUser;
+
+            return null;
+        }
+
 
         public User GetUserById(int id)
         {
@@ -20,7 +34,7 @@ namespace webservicecsharpasmx.Repository
             return user;
         }
 
-        public void InsertUser(User entity)
+        public void CreateUser(User entity)
         {
             _dataContext.User.Add(entity);
             _dataContext.SaveChanges();
@@ -28,7 +42,10 @@ namespace webservicecsharpasmx.Repository
 
         public void UpdateUser(User entity)
         {
-            User existingUser = _dataContext.User.Find(entity.Id);
+            /*User existingUser = _dataContext.User.Find(entity.Id);*/
+
+            //linq
+            User existingUser = _dataContext.User.FirstOrDefault(u => u.Id == entity.Id);
 
             if (existingUser != null)
             {

@@ -1,19 +1,41 @@
 ﻿using System;
+using System.Xml.Serialization;
 
 namespace webservicecsharpasmx.Models
 {
     public class User
     {
+        [XmlElement("Id")]
         public int Id { get; set; }
-        public int ProfileId { get; set; }
+
+        [XmlElement("ProfileId")]
+        public int ProfileId { get; set; } = 2;
+
+        [XmlElement("Username")]
         public string Username { get; set; } = String.Empty;
+
+        [XmlElement("Password")]
         public string Password { get; set; } = String.Empty;
+
+        [XmlElement("TempPassword")]
         public string TempPassword { get; set; } = String.Empty;
-        public DateTime LastLogin { get; set; }
+
+        [XmlElement("LastLogin")]
+        public DateTime? LastLogin { get; set; } = DateTime.Now;
+
+        [XmlElement("StatusId")]
         public int StatusId { get; set; }
-        public DateTime DateCreated { get; set; }
-        public DateTime DateUpdated { get; set; }
+
+        [XmlElement("DateCreated")]
+        public DateTime? DateCreated { get; set; } = DateTime.Now;
+
+        [XmlElement("DateUpdated")]
+        public DateTime? DateUpdated { get; set; } = DateTime.Now;
+
+        [XmlElement("CreatedBy")]
         public int CreatedBy { get; set; }
+
+        [XmlElement("UpdatedBy")]
         public int UpdatedBy { get; set; }
     }
 }
